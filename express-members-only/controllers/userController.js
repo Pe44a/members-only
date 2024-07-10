@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
+const passport = require("passport")
 const bcrypt = require("bcryptjs")
 const User = require("../models/user");
 
@@ -68,3 +69,17 @@ exports.user_sign_up_post = [
         }
     }),
 ];
+
+
+// Handle user sign in on GET.
+exports.user_sign_in_get = (req, res, next) => {
+    res.render("sign-in-form");
+  };
+
+// Handle user sign in on POST.
+exports.user_sign_in_post = (req, res, next) => {
+    passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/"
+      })(req, res, next)
+  };

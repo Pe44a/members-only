@@ -1,32 +1,32 @@
 extends layout
 
 block content
-  form.signup-form(action="/signup" method="POST")
-      h1.signup-form__title Sign Up
+  form.signup-form(method="POST")
+      h1.signup-form-title Sign Up
       if errors
         p= {errors}
       
-      .signup-form__field
-        label.signup-form__label(for="firstName") First Name: 
+      .signup-form-field
+        label.signup-form-label(for="firstName") First Name: 
         if firstName
           span= {firstName}
-        input.signup-form__input(type="text" id="firstName" name="firstName" required)
+        input.signup-form-input(type="text" id="firstName" name="firstName" required)
       
-      .signup-form__field
-        label.signup-form__label(for="lastName") Last Name:
+      .signup-form-field
+        label.signup-form-label(for="lastName") Last Name:
         if lastName
           span= {lastName}
-        input.signup-form__input(type="text" id="lastName" name="lastName" required)
+        input.signup-form-input(type="text" id="lastName" name="lastName" required)
       
-      .signup-form__field
-        label.signup-form__label(for="username") Username:
+      .signup-form-field
+        label.signup-form-label(for="username") Username:
         if username
           span= {username}
-        input.signup-form__input(type="text" id="username" name="username" required)
+        input.signup-form-input(type="text" id="username" name="username" required)
       
-      .signup-form__field
-        label.signup-form__label(for="password") Password:
-        input.signup-form__input(type="password" id="password" name="password" required)
+      .signup-form-field
+        label.signup-form-label(for="password") Password:
+        input.signup-form-input(type="password" id="password" name="password" required)
       
       
-      button.signup-form__button(type="submit") Sign Up
+      button.form-button(type="submit") Sign Up

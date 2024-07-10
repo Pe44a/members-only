@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .login-container
+    h1.login-title Login
+    form.login-form(action="/signin" method="POST")
+      .form-group
+        label.form-label(for="username") Username:
+        input.form-input(type="text" id="username" name="username" required)
+      .form-group
+        label.form-label(for="password") Password:
+        input.form-input(type="password" id="password" name="password" required)
+      button.form-button(type="submit") Log In
+    .login-links
+      a.signup-link(href="/signup") Sign Up
