@@ -25,4 +25,11 @@ router.get('/signin', userController.user_sign_in_get);
 router.post('/signin', userController.user_sign_in_post);
 
 
+// GET create post form 
+router.get('/create-post', userController.user_create_post_get);
+
+// POST create post form 
+router.post('/create-post', userController.user_create_post_post);
+
+
 module.exports = router;

@@ -3,6 +3,7 @@ const { body, validationResult } = require("express-validator");
 const passport = require("passport")
 const bcrypt = require("bcryptjs")
 const User = require("../models/user");
+const Post = require("../models/post");
 
 
 // Handle user sign up on GET.
@@ -79,7 +80,70 @@ exports.user_sign_in_get = (req, res, next) => {
 // Handle user sign in on POST.
 exports.user_sign_in_post = (req, res, next) => {
     passport.authenticate("local", {
-        successRedirect: "/",
+        successRedirect: "/create-post",
         failureRedirect: "/"
       })(req, res, next)
   };
+
+
+// Handle user creating a post on GET.
+exports.user_create_post_get = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        res.render('create-post-form');
+      } else {
+        res.redirect('/signin');
+    };
+}
+
+// Handle user creating a post on POST.
+exports.user_create_post_post = [
+    // Ensure user is authenticated
+    (req, res, next) => {
+        if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.redirect('/signin');
+        }
+    },
+
+    // Validate and sanitize fields.
+    body("title")
+        .trim()
+        .isLength({ min: 1 })
+        .escape()
+        .withMessage("Title must not be empty."),
+    body("text")
+        .trim()
+        .isLength({ min: 1 })
+        .escape()
+        .withMessage("Post content must not be empty."),
+
+    // Process request after validation and sanitization.
+    asyncHandler(async (req, res, next) => {
+        // Extract the validation errors from a request.
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            // There are errors. Render form again with sanitized values
+            res.render("create-post-form", {
+                title: req.body.title,
+                text: req.body.text,
+            });
+            return;
+        }
+    
+        // If no errors, proceed with post creation
+        try {
+            const post = new Post({
+                title: req.body.title,
+                text: req.body.text,
+                author: req.user._id, 
+            });
+            console.log(post);
+            await post.save();
+            res.redirect("/");
+        } catch(err) {
+            console.error(err);
+            next(err);
+        }
+    }),
+];
