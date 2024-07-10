@@ -8,44 +8,16 @@ body {
   background-color: #f0f0f0;
 }
 
-/* Sign up form */
-
-.signup-form {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  width: 300px;
-}
-.signup-form-title {
-  text-align: center;
-  color: #333;
-  margin-bottom: 20px;
-}
-.signup-form-field {
-  margin-bottom: 15px;
-}
-.signup-form-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #666;
-}
-.signup-form-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-.signup-form-input:focus {
-  outline: none;
-  border-color: #4CAF50;
-}
 
 
-/* Sign-in form */
 
-.login-container {
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container {
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
@@ -54,15 +26,10 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-title {
+.form-title {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
 }
 
 .form-group {
@@ -82,14 +49,28 @@ body {
   font-size: 16px;
 }
 
-.login-links {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
+.form-field {
+  margin-bottom: 15px;
+}
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+}
+.form-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #4CAF50;
 }
 
-.forgot-password,
-.signup-link {
+/* Links */
+.form-link {
   color: #007bff;
   text-decoration: none;
   font-size: 14px;

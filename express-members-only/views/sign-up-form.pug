@@ -1,32 +1,32 @@
 extends layout
 
 block content
-  form.signup-form(method="POST")
-      h1.signup-form-title Sign Up
+  form.form-container(method="POST")
+      h1.form-title Sign Up
       if errors
         p= {errors}
       
-      .signup-form-field
-        label.signup-form-label(for="firstName") First Name: 
+      .form-field
+        label.form-label(for="firstName") First Name: 
         if firstName
           span= {firstName}
-        input.signup-form-input(type="text" id="firstName" name="firstName" required)
+        input.form-input(type="text" id="firstName" name="firstName" required)
       
-      .signup-form-field
-        label.signup-form-label(for="lastName") Last Name:
+      .form-field
+        label.form-label(for="lastName") Last Name:
         if lastName
           span= {lastName}
-        input.signup-form-input(type="text" id="lastName" name="lastName" required)
+        input.form-input(type="text" id="lastName" name="lastName" required)
       
-      .signup-form-field
-        label.signup-form-label(for="username") Username:
+      .form-field
+        label.form-label(for="username") Username:
         if username
           span= {username}
-        input.signup-form-input(type="text" id="username" name="username" required)
+        input.form-input(type="text" id="username" name="username" required)
       
-      .signup-form-field
-        label.signup-form-label(for="password") Password:
-        input.signup-form-input(type="password" id="password" name="password" required)
+      .form-field
+        label.form-label(for="password") Password:
+        input.form-input(type="password" id="password" name="password" required)
       
       
       button.form-button(type="submit") Sign Up

@@ -1,9 +1,8 @@
 extends layout
 
 block content
-  .login-container
-    h1.login-title Login
-    form.login-form(action="/signin" method="POST")
+  form.form-container(method="POST")
+    h1.form-title Login
       .form-group
         label.form-label(for="username") Username:
         input.form-input(type="text" id="username" name="username" required)
@@ -12,4 +11,4 @@ block content
         input.form-input(type="password" id="password" name="password" required)
       button.form-button(type="submit") Log In
     .login-links
-      a.signup-link(href="/signup") Sign Up
+      a.form-link(href="/signup") Sign Up
