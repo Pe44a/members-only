@@ -6,9 +6,7 @@ const passport = require("passport")
 const userController = require("../controllers/userController")
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', userController.home_page_get);
 
 
 // GET sign-up form 

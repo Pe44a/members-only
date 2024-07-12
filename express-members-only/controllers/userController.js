@@ -6,6 +6,15 @@ const User = require("../models/user");
 const Post = require("../models/post");
 
 
+// Handle home page GET
+exports.home_page_get = asyncHandler(async (req, res, next) => {
+    const allPosts = await Post.find().sort({ title: 1 }).populate('author').exec();
+    res.render("index", {
+        isAuthenticated: req.isAuthenticated(),
+        post_list: allPosts,
+    });
+});
+
 // Handle user sign up on GET.
 exports.user_sign_up_get = (req, res, next) => {
     res.render("sign-up-form");

@@ -22,12 +22,11 @@ passport.use(
   new LocalStrategy(async (username, password, done) => {
       try {
         const user = await User.findOne({ username: username });
-        console.log(user)
-      if (!user) {
-        return done(null, false, { message: "Incorrect username" });
-      };
+        if (!user) {
+          return done(null, false, { message: "Incorrect username" });
+        };
       const match = await bcrypt.compare(password, user.password);
-      if (!match) {
+        if (!match) {
         // passwords do not match!
         return done(null, false, { message: "Incorrect password" })
       }
