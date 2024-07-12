@@ -17,7 +17,9 @@ exports.home_page_get = asyncHandler(async (req, res, next) => {
 
 // Handle user sign up on GET.
 exports.user_sign_up_get = (req, res, next) => {
-    res.render("sign-up-form");
+    res.render("sign-up-form", {
+        isAuthenticated: req.isAuthenticated()
+    });
   };
   
 // Handle user sign up on POST.
@@ -83,7 +85,9 @@ exports.user_sign_up_post = [
 
 // Handle user sign in on GET.
 exports.user_sign_in_get = (req, res, next) => {
-    res.render("sign-in-form");
+    res.render("sign-in-form", {
+        isAuthenticated: req.isAuthenticated()
+    });
   };
 
 // Handle user sign in on POST.
@@ -95,10 +99,22 @@ exports.user_sign_in_post = (req, res, next) => {
   };
 
 
+  // Handle user log out on GET.
+exports.user_log_out_get = (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+          return next(err);
+        }
+        res.redirect("/");
+      });    
+  };
+
 // Handle user creating a post on GET.
 exports.user_create_post_get = (req, res, next) => {
     if (req.isAuthenticated()) {
-        res.render('create-post-form');
+        res.render('create-post-form', {
+            isAuthenticated: req.isAuthenticated()
+        });
       } else {
         res.redirect('/signin');
     };

@@ -5,7 +5,14 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     .nav-bar
-      a(href="/").nav-bar-links Home
-      a(href="/signup").nav-bar-links Sign Up
+      div
+        a(href="/").nav-bar-links Home
+        a(href="/signup").nav-bar-links Sign Up
+      if isAuthenticated
+        div 
+          a(href="/logout" class="nav-bar-links") Log Out
+      else 
+        div 
+          a(href="/logout" class="nav-bar-links hide") Log Out
 
     block content

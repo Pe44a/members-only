@@ -11,12 +11,14 @@ body {
   display: flex;
   padding: 20px;
   gap: 10px;
+  justify-content: space-between;
 }
 
 .nav-bar-links {
   text-decoration: none;
   font-size: 22px;
   color: #007bff;
+  margin-right: 15px;
 }
 
 .nav-bar-links:hover {
@@ -103,6 +105,12 @@ body {
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 0 10px 10px 10px;
+}
+
+/* Hide */
+
+.hide {
+  display: none;
 }
 
 /* Links */
